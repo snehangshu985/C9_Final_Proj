@@ -1,0 +1,42 @@
+---
+title: "Developing Data Product Final Assignment"
+author: "Snehangshu Roy"
+date: "25/01/2022"
+output: slidy_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+The following is a simple application of the shiny. The data set used is diamond data set from UsingR library. It is data set on 48 diamond rings containing price in Singapore dollars and size of diamond in carats.
+A linear model was developed to predict the price of diamond based on the carat only. the codes are
+```{r, echo=TRUE,message=FALSE, warning=FALSE}
+library(UsingR)
+data("diamond")
+data_set = diamond
+fit_reg = lm(price ~ carat, data = data_set)
+```
+
+## Calculation and Plot
+The linear model has R-sqr value of 0.9783. The p-value of the predictor carat is <2e-16, which is highly significant. 
+The plot is
+```{r, echo=F,message=FALSE, warning=FALSE}
+plot(data_set, pch = 16, col="blue", 
+     ylab = "Price in Singapore dollars", 
+     xlab = "Size of Diamond in Carat") + 
+    abline(fit_reg, lwd =2, col="red")
+```
+
+## The Shiny App
+In the Shiny app the model is used to predict diamond price. The input required is carat of diamond. The input can be given though slider. After the input is given the final calculation will be done after submitting the submit now button is pressed. 
+
+Here is the [link of shiny app](https://rfpfi8-snehangshu-roy.shinyapps.io/Diamond_Data/)
+
+
+## Thank You
+
+```
+
